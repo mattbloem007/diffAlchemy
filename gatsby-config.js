@@ -8,7 +8,7 @@ let siteMetadata = {
   manifestDisplay: 'standalone',
   manifestIcon: 'src/assets/img/Alchemy of Remembrance Logo.png',
   pathPrefix: `/gatsby-starter-solidstate/`, // This path is subpath of your hosting https://domain/portfolio
-  heading: 'Matthew Gabriel Jason Bloemetje',
+  heading: 'The Alchemy of Remembrance',
   subHeading: 'Podcaster || Sangoma || Cacao Kuchina || Health & Longevity\n\n Living to create, learn, and explore the truth.  ',
   blogItemsPerPage: 10,
   portfolioItemsPerPage: 10,
@@ -78,8 +78,8 @@ module.exports = {
     {
         resolve: `gatsby-source-filesystem`,
         options: {
-            name: `contents`,
-            path: `${__dirname}/`
+            name: `src`,
+            path: `${__dirname}/src/`
         }
     },
     {

@@ -80,10 +80,48 @@ exports.createPages = ({ graphql, actions }) => {
             });
         });
 
+        const PortfolioItemsPerPage =
+            result.data.limitPost.siteMetadata.portfolioItemsPerPage;
+        const numPortfolioItems = Math.ceil(
+            blogPosts.length / PortfolioItemsPerPage
+        );
+
+        Array.from({ length: numPortfolioItems }).forEach((_, i) => {
+            createPage({
+                path: i === 0 ? `/portfolio` : `/portfolio/${i + 1}`,
+                component: path.resolve("./src/templates/portfolio-list.js"),
+                context: {
+                    limit: blogPostsPerPage,
+                    skip: i * blogPostsPerPage,
+                    numPages: numPortfolioItems,
+                    currentPage: i + 1
+                }
+            });
+        });
+
         blogPosts.forEach(({ node }) => {
             createPage({
                 path: node.slug,
                 component: path.resolve("./src/templates/blog.js"),
+                context: {
+                    id: node.id,
+                    slug: node.slug,
+                    featuredImage: node.featuredImage,
+                    id2:  {"eq": "SitePage /" + node.slug},
+                    id3: "SitePage /" + node.slug
+                }
+            });
+        });
+
+        blogPosts.forEach(({ node }) => {
+          console.log("NODE: ", (node.categories.edges[0].node.name).toLowerCase())
+            let template =
+                node.categories.edges[0].node.name === undefined
+                    ? "portfolio"
+                    : (node.categories.edges[0].node.name).toLowerCase();
+            createPage({
+                path: node.slug,
+                component: path.resolve("./src/templates/" + template + ".js"),
                 context: {
                     id: node.id,
                     slug: node.slug,

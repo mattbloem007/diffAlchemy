@@ -4,12 +4,13 @@ import Layout from '../components/Layout';
 import Img from 'gatsby-image'
 
 
+
 export default function({ data }) {
   let isImage = false;
   if (data.file.childImageSharp) {
     isImage = true;
   }
-  console.log("ISIMAGE: ", isImage)
+
     return (
       <Layout fullMenu>
         <section id="wrapper">
@@ -64,7 +65,7 @@ export default function({ data }) {
   }
 
 export const query = graphql`
-query GET_POSTS($id: ID!, $id2: StringQueryOperatorInput) {
+query portfolioPosts($id: ID!, $id2: StringQueryOperatorInput) {
 
 wpgraphql {
 post(id: $id) {
@@ -86,7 +87,7 @@ post(id: $id) {
 file(parent: {id: $id2}) {
     name
     childImageSharp {
-      fluid (maxWidth: 200, maxHeight: 200){
+      fluid (maxWidth: 500){
         srcSet
         ...GatsbyImageSharpFluid
 

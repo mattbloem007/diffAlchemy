@@ -66,5 +66,5 @@ export default function(props) {
 
       });
     }
-    return <div className="row">{items}</div>;
+    return <section className="features">{items}</section>;
 }

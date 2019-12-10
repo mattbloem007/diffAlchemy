@@ -143,9 +143,10 @@ exports.onCreateNode = async ({ node, getNode, actions, store, cache, createNode
      if (node.context != undefined) {
 
        if (node.context.featuredImage) {
+         console.log("NODE: ", node.context.featuredImage.sourceUrl)
+
          try {
            fileNode = await createRemoteFileNode({
-             console.log("NODE: ", node.context.featuredImage.sourceUrl)
              url: node.context.featuredImage.sourceUrl,
              parentNodeId: node.id,
              store,

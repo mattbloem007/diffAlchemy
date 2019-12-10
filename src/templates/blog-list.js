@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import BlogItems from "../components/items-blog";
 
+
 class BlogList extends React.Component {
     render() {
         const query = this.props.datas;

@@ -17,10 +17,10 @@ class Section extends React.Component {
     }
 }
 
-export default function({ data, pathContext }) {
+export default function({ data, pageContext }) {
     return (
         <Layout>
-            <Section datas={data} pathContext={pathContext} />
+            <Section datas={data} pathContext={pageContext} />
         </Layout>
     );
 }

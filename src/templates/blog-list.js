@@ -24,10 +24,10 @@ class BlogList extends React.Component {
     }
 }
 
-export default function({ data, pathContext }) {
+export default function({ data, pageContext }) {
     return (
         <Layout>
-            <BlogList datas={data} pathContext={pathContext} />
+            <BlogList datas={data} pathContext={pageContext} />
         </Layout>
     );
 }

@@ -44,7 +44,7 @@
       ('opacity #{_duration(menu)} ease', 'transform #{_duration(menu)} ease')
     );
     -webkit-overflow-scrolling: touch;
-    background: _palette(accent);
+    background: _palette(amber-darken-2);
     border-radius: _size(border-radius);
     display: block;
     max-width: 100%;
@@ -54,7 +54,7 @@
   }
 
   h2 {
-    border-bottom: solid 2px _palette(border);
+    border-bottom: solid 2px _palette(amber-lighten-1);
     padding-bottom: 1em;
   }
 
@@ -97,7 +97,7 @@
         text-transform: uppercase;
 
         &:hover {
-          background: saturate(darken(_palette(accent), 3), 1.5);
+          background: saturate(darken(_palette(border), 3), 1.5);
         }
       }
     }

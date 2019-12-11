@@ -37,7 +37,7 @@ let siteMetadata = {
     {
       icon: 'fa-envelope-o',
       name: 'Email',
-      url: 'mailto:mattb007@gmail.com',
+      url: 'mattb007@gmail.com',
     },
   ],
   phone: '083-293-5904',
@@ -95,6 +95,12 @@ module.exports = {
       //  url: `http://alchemy-of-remembrance.local/graphql`
        },
      },
+     {
+        resolve: 'gatsby-plugin-mailchimp',
+        options: {
+            endpoint: 'https://netlify.us4.list-manage.com/subscribe/post?u=4bb341a70f699ab5f28026c9b&amp;id=4899fd0d31', // add your MC list endpoint here; see instructions below
+        },
+    },
     'gatsby-plugin-sass',
     'gatsby-plugin-offline',
   ],

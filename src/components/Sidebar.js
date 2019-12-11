@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Nav from './Nav';
+import MailingForm from './mailingForm';
 import { Link } from 'gatsby';
 export default function SideBar({ fullMenu }) {
   const [headerOpen, toggleHeader] = useState(false);

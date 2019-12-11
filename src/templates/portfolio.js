@@ -22,12 +22,15 @@ export default function({ data }) {
                   __html: data.wpgraphql.post.excerpt
               }} />
             </div>
+            <div className="wrapper">
+              <div className="inner" dangerouslySetInnerHTML={{
+                  __html: data.wpgraphql.post.content
+              }}>
+              </div>
+            </div>
           </header>
 
-          <div className="wrapper">
-            <div className="inner" dangerouslySetInnerHTML={{
-                __html: data.wpgraphql.post.content
-            }}>
+
 
               {/**<section className="features">
                 <article>
@@ -57,8 +60,7 @@ export default function({ data }) {
                   </a>
                 </article>
               </section>*/}
-            </div>
-          </div>
+
         </section>
       </Layout>
     )

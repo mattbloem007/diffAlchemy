@@ -31,9 +31,9 @@ class SectionItem extends React.Component {
               </div>
               <div className="content">
                 <h2 className="major">{this.props.data.node.title}</h2>
-                <div  dangerouslySetInnerHTML={{
-                    __html: this.props.data.node.excerpt
-                }} />
+                  <div dangerouslySetInnerHTML={{
+                      __html: this.props.data.node.excerpt
+                  }} />
                 <a href={"/" + this.props.data.node.slug} className="special">
                   Learn more
                 </a>

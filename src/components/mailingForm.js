@@ -25,16 +25,11 @@ export default class MailingForm extends React.Component {
 
               console.log(name, " ", email)
 
-              addToMailchimp(email, {FNAME: name}) // listFields are optional if you are only capturing the email address.
+              addToMailchimp(email, {FNAME: name})
     .then(data => {
-      // I recommend setting data to React state
-      // but you can do whatever you want (including ignoring this `then()` altogether)
       console.log(data)
     })
     .catch(() => {
-      // unnecessary because Mailchimp only ever
-      // returns a 200 status code
-      // see below for how to handle errors
     })
       }
     }

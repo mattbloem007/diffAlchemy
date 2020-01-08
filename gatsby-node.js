@@ -1,8 +1,18 @@
 const { createFilePath, createRemoteFileNode } = require(`gatsby-source-filesystem`);
 const path = require(`path`);
+const crypto = require('crypto')
+
+// require library
+const ypi = require('youtube-playlist-info')
+// read my API key
+const YT_KEY = 'AIzaSyBAmO9nEY9Z3mJ8gi5_obOZwOgXxiT8dMQ'
+// hardcode ID of my playlist for now
+const LWyP = 'PL_SSIvQejT9h_f2oS3pwo_pV9LYgaUuLp'
 
 exports.createPages = ({ graphql, actions }) => {
     const { createPage } = actions;
+
+
 
     return graphql(`
         {
@@ -10,6 +20,7 @@ exports.createPages = ({ graphql, actions }) => {
                 siteMetadata {
                     blogItemsPerPage
                     portfolioItemsPerPage
+                    podcastsItemsPerPage
                 }
             }
 
@@ -51,8 +62,15 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
-
+          }
+            allShopifyProduct {
+            edges {
+              node {
+                handle
+              }
             }
+          }
+
         }
 
 
@@ -99,6 +117,26 @@ exports.createPages = ({ graphql, actions }) => {
             });
         });
 
+        const PodcastsItemsPerPage =
+            result.data.limitPost.siteMetadata.podcastsItemsPerPage;
+        const numPodcastItems = Math.ceil(
+            blogPosts.length / PodcastsItemsPerPage
+        );
+
+        Array.from({ length: numPodcastItems }).forEach((_, i) => {
+            createPage({
+                path: i === 0 ? `/podcast` : `/podcast/${i + 1}`,
+                component: path.resolve("./src/templates/podcast-list.js"),
+                context: {
+                    limit: blogPostsPerPage,
+                    skip: i * blogPostsPerPage,
+                    numPages: numPortfolioItems,
+                    currentPage: i + 1
+                }
+            });
+        });
+
+
         blogPosts.forEach(({ node }) => {
             createPage({
                 path: node.slug,
@@ -131,6 +169,29 @@ exports.createPages = ({ graphql, actions }) => {
                 }
             });
         });
+
+        allPages.forEach(({ node }) => {
+            createPage({
+                path: node.slug,
+                component: path.resolve("./src/templates/blog.js"),
+                context: {
+                    id: node.id,
+                    slug: node.slug
+                }
+            });
+        });
+
+        result.data.allShopifyProduct.edges.forEach(({ node }) => {
+      createPage({
+        path: `/product/${node.handle}/`,
+        component: path.resolve(`./src/templates/ProductPage/index.js`),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          handle: node.handle,
+        },
+      })
+    })
 
     });
 };
@@ -165,3 +226,74 @@ exports.onCreateNode = async ({ node, getNode, actions, store, cache, createNode
       node.localFile___NODE = fileNode.id
     }
 };
+
+
+exports.sourceNodes = async ({ boundActionCreators, getNode, hasNodeChanged, }) => {
+    const { createNode } = boundActionCreators;
+
+    const makeNode = node => {
+    node.internal.contentDigest = crypto
+      .createHash('md5')
+      .update(JSON.stringify(node))
+      .digest('hex')
+
+    createNode(node)
+  }
+
+  const items = await ypi(YT_KEY, LWyP)
+
+  let ytNode = {
+    id: 'youtube',
+    children: ['ytPlaylists'],
+    parent: null,
+    internal: {
+      type: 'youtube',
+    },
+  }
+
+  let playlistsNode = {
+    id: 'ytPlaylists',
+    parent: 'youtube',
+    children: ['lwypPlaylist'],
+    internal: {
+      type: 'ytPlaylists',
+    },
+  }
+
+  let lwypNode = {
+    id: 'lwypPlaylist',
+    parent: 'ytPlaylists',
+    children: [],
+    internal: {
+      type: 'ytPlaylist',
+    },
+  }
+
+  lwypNode.children = items.map(
+    ({ title, description, resourceId, thumbnails, position }) => {
+      const id = `${resourceId.videoId}`
+      makeNode({
+        id,
+        title,
+        description,
+        thumbnails,
+        position,
+        resourceId,
+        internal: {
+          type: 'ytVideo',
+        },
+        parent: 'lwypPlaylist',
+        children: [],
+      })
+      return id
+    }
+  )
+
+  makeNode(lwypNode)
+  makeNode(playlistsNode)
+  makeNode(ytNode)
+
+  // makeNode(lwypNode)
+
+  return
+}

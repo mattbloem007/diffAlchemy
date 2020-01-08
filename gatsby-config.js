@@ -12,6 +12,7 @@ let siteMetadata = {
   subHeading: 'Podcaster || Sangoma || Cacao Kuchina || Health & Longevity\n\n Living to create, learn, and explore the truth.  ',
   blogItemsPerPage: 10,
   portfolioItemsPerPage: 10,
+  podcastsItemsPerPage: 10,
   // social
   socialLinks: [
     // {
@@ -78,8 +79,8 @@ module.exports = {
     {
         resolve: `gatsby-source-filesystem`,
         options: {
-            name: `src`,
-            path: `${__dirname}/src/`
+            name: `images`,
+            path: `${__dirname}/src/assets/images`
         }
     },
     {
@@ -101,6 +102,24 @@ module.exports = {
             endpoint: 'https://netlify.us4.list-manage.com/subscribe/post?u=4bb341a70f699ab5f28026c9b&amp;id=4899fd0d31', // add your MC list endpoint here; see instructions below
         },
     },
+    {
+     resolve: "gatsby-wpgraphql-inline-images",
+     options: {
+       wordPressUrl: 'http://41.185.8.137/~xic02/alchemyofremembrance/',
+       uploadsUrl: 'http://41.185.8.137/~xic02/alchemyofremembrance/wp-content/uploads/',
+       processPostTypes: ["Post"],
+       graphqlTypeName: `WPGraphQL`,
+     },
+   },
+   {
+    resolve: `gatsby-source-shopify`,
+    options: {
+      // The domain name of your Shopify shop.
+      shopName: `the-alchemy-of-remembrance`,
+      // The storefront access token
+      accessToken: `f8d20c76aec4f39847ba2e4ce903143a`,
+    },
+  },
     'gatsby-plugin-sass',
     'gatsby-plugin-offline',
   ],

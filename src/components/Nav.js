@@ -22,6 +22,26 @@ export default function Nav({ onMenuToggle = () => {} }) {
               onClick={e => {
                 onMenuToggle();
               }}
+              to="/about"
+            >
+              About
+            </Link>
+          </li>
+          <li>
+            <Link
+              onClick={e => {
+                onMenuToggle();
+              }}
+              to="/podcast"
+            >
+              Podcast
+            </Link>
+          </li>
+          <li>
+            <Link
+              onClick={e => {
+                onMenuToggle();
+              }}
               to="/blog"
             >
               Blog
@@ -37,6 +57,17 @@ export default function Nav({ onMenuToggle = () => {} }) {
               Offerings
             </Link>
           </li>
+          <li>
+            <Link
+              onClick={e => {
+                onMenuToggle();
+              }}
+              to="/videos"
+            >
+              Videos
+            </Link>
+          </li>
+
         </ul>
         <a
           className="close"

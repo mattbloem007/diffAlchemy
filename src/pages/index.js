@@ -21,7 +21,7 @@ const IndexPage = () => (
       </div>
     </section>
     <SectionListAndImages />
-      <BlogList />
+    <BlogList />
   </Layout>
 );
 

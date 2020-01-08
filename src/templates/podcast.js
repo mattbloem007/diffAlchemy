@@ -73,7 +73,7 @@ console.log(content)
   }
 
 export const query = graphql`
-query portfolioPosts($id: ID!, $id2: StringQueryOperatorInput) {
+query podcastPosts($id: ID!, $id2: StringQueryOperatorInput) {
 
 wpgraphql {
 post(id: $id) {

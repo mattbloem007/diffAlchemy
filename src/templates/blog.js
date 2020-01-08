@@ -2,9 +2,17 @@ import React from "react";
 import { graphql } from "gatsby";
 import Layout from '../components/Layout';
 import Img from 'gatsby-image'
+import contentParser from 'gatsby-wpgraphql-inline-images';
 
 
+const pluginOptions = {
+  wordPressUrl: 'http://41.185.8.137/~xic02/alchemyofremembrance/',
+  uploadsUrl: 'http://41.185.8.137/~xic02/alchemyofremembrance/wp-content/uploads/'
+};
 export default function({ data }) {
+
+  const {content} = data.wpgraphql.post
+   
   let isImage = false;
   if (data.file.childImageSharp) {
     isImage = true;
@@ -17,15 +25,9 @@ export default function({ data }) {
             <div className="inner">
             {isImage? <Img className="image fit" fluid={data.file.childImageSharp.fluid}/> : null}
               <h2>{data.wpgraphql.post.title}</h2>
-              <div dangerouslySetInnerHTML={{
-                  __html: data.wpgraphql.post.excerpt
-              }} />
             </div>
             <div className="wrapper">
-              <div className="inner" dangerouslySetInnerHTML={{
-                  __html: data.wpgraphql.post.content
-              }}>
-              </div>
+              <div className="inner">{contentParser({ content }, pluginOptions)}</div>
             </div>
           </header>
 

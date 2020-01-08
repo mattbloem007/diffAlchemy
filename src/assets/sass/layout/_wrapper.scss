@@ -45,6 +45,12 @@
       padding-bottom: _size(element-margin) * 0.2;
     }
 
+    h4 {
+      border-bottom: solid 2px _palette(border);
+      margin-bottom: _size(element-margin) * 0.4;
+      padding-bottom: _size(element-margin) * 0.2;
+    }
+
     p {
       font-family: _font(family-heading);
       font-size: 1em;
@@ -317,4 +323,16 @@
       @include padding(2em, 1.5em);
     }
   }
+}
+
+.videoContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.videos {
+  padding: 5px;
+
 }

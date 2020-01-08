@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
+import ContextProvider from '../provider/ContextProvider'
 
 import '../assets/sass/main.scss';
 import Footer from './Footer';
 import SideBar from './Sidebar';
 import Mailing from './mailing'
+import Navigation from './Navigation'
+
 
 class Layout extends Component {
   constructor(props) {
@@ -32,6 +35,8 @@ class Layout extends Component {
     const { children, fullMenu } = this.props;
     const { isPreloaded } = this.state;
     return (
+    <ContextProvider>
+
       <StaticQuery
         query={graphql`
           query SiteTitleQuery {
@@ -57,15 +62,17 @@ class Layout extends Component {
               className={isPreloaded ? ' main-body  is-preload' : ' main-body'}
             >
               <div id="page-wrapper">
-                <SideBar fullMenu={fullMenu} />
-                <Mailing />
+                <Navigation siteTitle={data.site.siteMetadata.title}/>
                 {children}
-                <Footer />
+                <Mailing />
               </div>
             </div>
           </>
+
         )}
       />
+      </ContextProvider>
+
     );
   }
 }

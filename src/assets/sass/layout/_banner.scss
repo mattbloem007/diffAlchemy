@@ -6,12 +6,19 @@
 
 /* Banner */
 
+$ani-speed: 2s;
+$ani-delay: 1s;
+
+
 #banner {
   @include padding(10em, 0, (0, 0, _size(wrapper-edges, large) * -0.5, 0));
 
   .inner {
     margin: 0 auto;
     width: _size(inner);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .container {
@@ -52,7 +59,6 @@
     @include vendor('transition-delay', '0.65s');
     @include vendor('filter', 'blur(0)');
     opacity: 1;
-    border-bottom: solid 2px _palette(border);
     font-size: 2.25em;
     margin-bottom: _size(element-margin) * 0.4;
     padding-bottom: _size(element-margin) * 0.2;
@@ -144,5 +150,59 @@
       @include vendor('transform', 'translateX(0.5em)');
       @include vendor('filter', 'blur(2px)');
     }
+  }
+
+  .containArrows {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .arrow {
+      opacity: 0;
+      align-self: center;
+      transform-origin: 50% 50%;
+      transform: translate3d(-50%, -50%, 0);
+  }
+
+  .arrow-first {
+      margin-top: 10%;
+      margin-bottom: 2%;
+      animation: arrow-movement $ani-speed ease-in-out infinite;
+  }
+  .arrow-second {
+      animation: arrow-movement $ani-speed $ani-delay ease-in-out infinite;
+  }
+
+  .arrow:before,
+  .arrow:after {
+      background: #fff;
+      content: '';
+      display: block;
+      height: 3px;
+      width: 30px;
+  }
+
+  .arrow:before {
+      transform: rotate(45deg) translateX(-23%);
+      transform-origin: top left;
+  }
+
+  .arrow:after {
+      transform: rotate(-45deg) translateX(23%);
+      transform-origin: top right;
+  }
+
+  // Animation
+  @keyframes arrow-movement {
+      0% {
+          opacity: 0;
+          top: 45%;
+      }
+      70% {
+          opacity: 1;
+      }
+      100% {
+          opacity: 0;
+      }
   }
 }

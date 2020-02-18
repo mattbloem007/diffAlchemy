@@ -2,6 +2,33 @@ import React from 'react';
 import config from '../../config';
 import emailjs from 'emailjs-com';
 
+import Mailing from './mailing'
+
+var divStyle = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-around"
+};
+
+var soc = {
+  marginTop: "5rem",
+  justifyContent: "center",
+  display: "flex"
+}
+
+var link = {
+  textAlign: "center",
+    height: "3rem",
+    width: "3rem",
+    background: "hsla(225, 7%, 3%,1)",
+    borderRadius: "100%",
+    lineHeight: "3rem",
+    color: "hsla(0,0%,100%,1)",
+    marginLeft: ".5rem",
+    marginRight: ".5rem"
+}
+
+
 class Footer extends React.Component {
 
   constructor(props) {
@@ -49,9 +76,9 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <section id="footer">
-        <div className="inner">
-          <h2 className="major">Get in touch</h2>
+      <section id="footer" style={divStyle}>
+      <Mailing/>
+          {/**<h2 className="major">Get in touch</h2>
           <p>
             Contact Matthew Gabriel here. Ask your questions for the podcast, send an amazing experience to share, or just get in touch
           </p>
@@ -104,19 +131,19 @@ class Footer extends React.Component {
               > Send Message</button>
               </li>
             </ul>
-          </form>
-          <ul className="contact">
-            <li className="fa-phone">{config.phone}</li>
+          </form>*/}
+          <div style={soc}>
+          {config.socialLinks.map(social => {
+            const { icon, url } = social;
+            return (
+              <a target="_blank" href={url} style={link}>
+                <i className={`fa ${icon}`} />
+              </a>
+            );
+          })}
+          </div>
+          <div className="inner">
 
-            {config.socialLinks.map(social => {
-              const { icon, url } = social;
-              return (
-                <li className={`${icon}`} key={url}>
-                  <a target="_blank" href={url}>{url}</a>
-                </li>
-              );
-            })}
-          </ul>
           <ul className="copyright">
             <li>&copy; The Alchemy of Remembrance. All rights reserved.</li>
           </ul>

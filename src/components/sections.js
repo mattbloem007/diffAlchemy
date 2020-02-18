@@ -6,7 +6,7 @@ export default function() {
     const query = useStaticQuery(graphql`
       query sectionListAndImages{
           wpgraphql {
-            posts (where: {categoryName: "Portfolio"}){
+            posts (where: {categoryName: "Portfolio", orderby: {field: DATE, order: ASC}}){
               edges{
                 node{
                   excerpt

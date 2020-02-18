@@ -50,7 +50,7 @@ export default function() {
         return (
           <section id="four" className="wrapper alt style1">
             <div className="inner">
-              <h2 className="major">Blog</h2>
+              <h2 className="major">Readings</h2>
                 <BlogItems data={query} />
               </div>
             </section>

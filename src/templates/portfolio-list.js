@@ -28,7 +28,7 @@ export default function({ data, pageContext }) {
 export const query = graphql`
 query portfolioListPage($limit: Int!) {
     wpgraphql {
-      posts(where: {categoryName: "Portfolio", orderby: {field: DATE, order: DESC}}, first: $limit) {
+      posts(where: {categoryName: "Portfolio", orderby: {field: DATE, order: ASC}}, first: $limit) {
         edges {
           node {
             excerpt

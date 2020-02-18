@@ -12,7 +12,7 @@ class BlogList extends React.Component {
             return (
                 <section id="four" className="wrapper alt style1">
                   <div className="inner">
-                    <h2 className="major">Blog</h2>
+                    <h2 className="major">Readings</h2>
                     <section className="features">
                       <BlogItems data={query}/>
                     </section>

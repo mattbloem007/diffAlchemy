@@ -64,7 +64,7 @@ class Layout extends Component {
               <div id="page-wrapper">
                 <Navigation siteTitle={data.site.siteMetadata.title}/>
                 {children}
-                <Mailing />
+                <Footer />
               </div>
             </div>
           </>

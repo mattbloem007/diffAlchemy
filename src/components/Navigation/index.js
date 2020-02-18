@@ -46,7 +46,7 @@ const Navigation = ({ siteTitle }) => {
 				>
 					Offerings
 				</MenuLink>
-				<MenuLink
+				{/*<MenuLink
 					to="/products"
 				>
 					Shop
@@ -58,7 +58,7 @@ const Navigation = ({ siteTitle }) => {
 						</CartCounter>
 					}
 					Cart 🛍
-				</MenuLink>
+				</MenuLink>**/}
 			</Container>
 		</Wrapper>
 	)

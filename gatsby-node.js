@@ -63,13 +63,7 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
-            allShopifyProduct {
-            edges {
-              node {
-                handle
-              }
-            }
-          }
+
 
         }
 
@@ -77,6 +71,13 @@ exports.createPages = ({ graphql, actions }) => {
 
 
     `).then(result => {
+    //   allShopifyProduct {
+    //   edges {
+    //     node {
+    //       handle
+    //     }
+    //   }
+    // }
         const blogPosts = result.data.wpgraphql.posts.edges;
         const allPages = result.data.wpgraphql.pages.edges;
         console.log(blogPosts)
@@ -181,17 +182,17 @@ exports.createPages = ({ graphql, actions }) => {
             });
         });
 
-        result.data.allShopifyProduct.edges.forEach(({ node }) => {
-      createPage({
-        path: `/product/${node.handle}/`,
-        component: path.resolve(`./src/templates/ProductPage/index.js`),
-        context: {
-          // Data passed to context is available
-          // in page queries as GraphQL variables.
-          handle: node.handle,
-        },
-      })
-    })
+    //     result.data.allShopifyProduct.edges.forEach(({ node }) => {
+    //   createPage({
+    //     path: `/product/${node.handle}/`,
+    //     component: path.resolve(`./src/templates/ProductPage/index.js`),
+    //     context: {
+    //       // Data passed to context is available
+    //       // in page queries as GraphQL variables.
+    //       handle: node.handle,
+    //     },
+    //   })
+    // })
 
     });
 };

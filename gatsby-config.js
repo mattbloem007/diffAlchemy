@@ -111,15 +111,15 @@ module.exports = {
        graphqlTypeName: `WPGraphQL`,
      },
    },
-   {
-    resolve: `gatsby-source-shopify`,
-    options: {
-      // The domain name of your Shopify shop.
-      shopName: `the-alchemy-of-remembrance`,
-      // The storefront access token
-      accessToken: `f8d20c76aec4f39847ba2e4ce903143a`,
-    },
-  },
+  //  {
+  //   resolve: `gatsby-source-shopify`,
+  //   options: {
+  //     // The domain name of your Shopify shop.
+  //     shopName: `the-alchemy-of-remembrance`,
+  //     // The storefront access token
+  //     accessToken: `f8d20c76aec4f39847ba2e4ce903143a`,
+  //   },
+  // },
     'gatsby-plugin-sass',
     'gatsby-plugin-offline',
   ],

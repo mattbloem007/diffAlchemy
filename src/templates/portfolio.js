@@ -17,7 +17,7 @@ export default function({ data }) {
   console.log("DATA: ", data)
 
   let isImage = false;
-  if (data.file.childImageSharp) {
+  if (data.file) {
     isImage = true;
   }
 

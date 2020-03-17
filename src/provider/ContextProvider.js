@@ -4,8 +4,8 @@ import Client from 'shopify-buy'
 import Context from '../context/StoreContext'
 
 const client = Client.buildClient({
-  storefrontAccessToken: "f8d20c76aec4f39847ba2e4ce903143a",
-  domain: `the-alchemy-of-remembrance.myshopify.com`,
+  storefrontAccessToken: "5b2dd80868e51fce62ae78dba1cfe038",
+  domain: `remembrancealchemy.myshopify.com`,
 })
 
 const ContextProvider = ({ children }) => {

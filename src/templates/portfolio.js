@@ -14,11 +14,8 @@ const pluginOptions = {
 export default function({ data }) {
 
    const { content } = data.wpgraphql.post
-   if (data.file)
-{console.log(data.file)}
-else {
   console.log("DATA: ", data)
-}
+
   let isImage = false;
   if (data.file.childImageSharp) {
     isImage = true;

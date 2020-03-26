@@ -28,7 +28,7 @@ class PodcastList extends React.Component {
 export default function({ data, pageContext }) {
     return (
         <Layout>
-            <PodcastList datas={data} pathContext={pageContext} />
+            <PodcastList datas={data} pageContext={pageContext} />
         </Layout>
     );
 }
@@ -46,7 +46,7 @@ export const query = graphql`
                 featuredImage {
                   sourceUrl
                 }
-                elementorData
+
               }
             }
           }

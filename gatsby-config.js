@@ -15,11 +15,11 @@ let siteMetadata = {
   podcastsItemsPerPage: 10,
   // social
   socialLinks: [
-    // {
-    //   icon: 'fa-twitter',
-    //   name: 'Twitter',
-    //   url: 'https://twitter.com/onlyanubhav',
-    // },
+    {
+      icon: 'fa-twitter',
+      name: 'Spotify',
+      url: 'https://open.spotify.com/show/0bFinEi1xUyJ1uZwRrxGD5',
+    },
     {
       icon: 'fa-facebook',
       name: 'Facebook',
@@ -111,15 +111,30 @@ module.exports = {
        graphqlTypeName: `WPGraphQL`,
      },
    },
-   {
-    resolve: `gatsby-source-shopify`,
-    options: {
-      // The domain name of your Shopify shop.
-      shopName: `remembrancealchemy`,
-      // The storefront access token
-      accessToken: `5b2dd80868e51fce62ae78dba1cfe038`,
+  //  {
+  //   resolve: `gatsby-source-shopify`,
+  //   options: {
+  //     // The domain name of your Shopify shop.
+  //     shopName: `remembrancealchemy`,
+  //     // The storefront access token
+  //     accessToken: `5b2dd80868e51fce62ae78dba1cfe038`,
+  //   },
+  // },
+  {
+  resolve: "@pasdo501/gatsby-source-woocommerce",
+  options: {
+    // Base URL of Wordpress site
+    api: 'http://41.185.8.137/~xic02/alchemyofremembrance/',
+    // true if using https. false otherwise.
+    https: false,
+    api_keys: {
+      consumer_key: `ck_dabd3f2ae776badf2c123f6641e248ccfef56f73`,
+      consumer_secret: `cs_10b9d1d9dcf54cc0e289e46faf27890f2bb408e9`,
     },
-  },
+    // Array of strings with fields you'd like to create nodes for...
+    fields: ['products', 'products/categories', 'products/attributes'],
+  }
+},
     'gatsby-plugin-sass',
     'gatsby-plugin-offline',
   ],

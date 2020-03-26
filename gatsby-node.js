@@ -40,7 +40,7 @@ exports.createPages = ({ graphql, actions }) => {
                       }
                     }
                   }
-                  elementorData
+
                 }
               }
             }
@@ -64,13 +64,15 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
 
-          allShopifyProduct {
-          edges {
-            node {
-              handle
-            }
-          }
+
+
+          allWcProducts {
+      edges {
+        node {
+          id
         }
+      }
+    }
 
         }
 
@@ -78,7 +80,13 @@ exports.createPages = ({ graphql, actions }) => {
 
 
     `).then(result => {
-
+      // allShopifyProduct {
+      // edges {
+      //   node {
+      //     handle
+      //   }
+      // }
+      // }
         const blogPosts = result.data.wpgraphql.posts.edges;
         const allPages = result.data.wpgraphql.pages.edges;
         console.log(blogPosts)
@@ -154,11 +162,12 @@ exports.createPages = ({ graphql, actions }) => {
         });
 
         blogPosts.forEach(({ node }) => {
-          console.log("NODE: ", (node.categories.edges[0].node.name).toLowerCase())
             let template =
                 node.categories.edges[0].node.name === undefined
                     ? "portfolio"
                     : (node.categories.edges[0].node.name).toLowerCase();
+                    console.log("NODE1: ", template)
+
             createPage({
                 path: node.slug,
                 component: path.resolve("./src/templates/" + template + ".js"),
@@ -183,15 +192,27 @@ exports.createPages = ({ graphql, actions }) => {
             });
         });
 
-        result.data.allShopifyProduct.edges.forEach(({ node }) => {
+    //     result.data.allShopifyProduct.edges.forEach(({ node }) => {
+    //   createPage({
+    //     path: `/product/${node.handle}/`,
+    //     component: path.resolve(`./src/templates/ProductPage/index.js`),
+    //     context: {
+    //       // Data passed to context is available
+    //       // in page queries as GraphQL variables.
+    //       handle: node.handle,
+    //     },
+    //   })
+    // })
+
+    result.data.allWcProducts.edges.forEach(({ node }) => {
       createPage({
-        path: `/product/${node.handle}/`,
+        path: `/product/${node.id}/`,
         component: path.resolve(`./src/templates/ProductPage/index.js`),
-        context: {
-          // Data passed to context is available
-          // in page queries as GraphQL variables.
-          handle: node.handle,
-        },
+            context: {
+              // Data passed to context is available
+              // in page queries as GraphQL variables.
+              name: node.id
+            },
       })
     })
 
@@ -230,8 +251,8 @@ exports.onCreateNode = async ({ node, getNode, actions, store, cache, createNode
 };
 
 
-exports.sourceNodes = async ({ boundActionCreators, getNode, hasNodeChanged, }) => {
-    const { createNode } = boundActionCreators;
+exports.sourceNodes = async ({ actions, getNode, hasNodeChanged, }) => {
+    const { createNode } = actions;
 
     const makeNode = node => {
     node.internal.contentDigest = crypto

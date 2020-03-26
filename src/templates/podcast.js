@@ -14,7 +14,7 @@ const pluginOptions = {
 export default function({ data }) {
 
    const { content } = data.wpgraphql.post
-console.log(content)
+console.log("HER", content)
   let isImage = false;
   if (data.file.childImageSharp) {
     isImage = true;
@@ -88,7 +88,7 @@ post(id: $id) {
     sourceUrl
     title
   }
-  elementorData
+
 }
 }
 

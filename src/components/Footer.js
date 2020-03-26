@@ -136,7 +136,7 @@ class Footer extends React.Component {
           {config.socialLinks.map(social => {
             const { icon, url } = social;
             return (
-              <a target="_blank" href={url} style={link}>
+              <a key={url} target="_blank" href={url} style={link}>
                 <i className={`fa ${icon}`} />
               </a>
             );

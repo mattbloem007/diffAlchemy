@@ -12,7 +12,7 @@ const pluginOptions = {
 export default function({ data }) {
 
   const {content} = data.wpgraphql.post
-   
+
   let isImage = false;
   if (data.file.childImageSharp) {
     isImage = true;
@@ -83,7 +83,7 @@ post(id: $id) {
     sourceUrl
     title
   }
-  elementorData
+  
 }
 }
 

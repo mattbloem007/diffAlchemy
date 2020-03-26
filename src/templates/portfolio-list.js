@@ -20,7 +20,7 @@ class Section extends React.Component {
 export default function({ data, pageContext }) {
     return (
         <Layout>
-            <Section datas={data} pathContext={pageContext} />
+            <Section datas={data} pageContext={pageContext} />
         </Layout>
     );
 }
@@ -38,7 +38,7 @@ query portfolioListPage($limit: Int!) {
             featuredImage {
               sourceUrl
             }
-            elementorData
+
           }
         }
       }

@@ -17,6 +17,13 @@ const useQuantity = () => {
 	return [total !== 0, total]
 }
 
+const styling = {
+	color: "white",
+	textDecoration: "none",
+	fontSize: "1rem",
+	fontWeight: "bold"
+}
+
 const Navigation = ({ siteTitle }) => {
   const [hasItems, quantity] = useQuantity()
 
@@ -46,19 +53,19 @@ const Navigation = ({ siteTitle }) => {
 				>
 					Offerings
 				</MenuLink>
-				<MenuLink
-					to="/products"
+				<a target="_blank" style={styling}
+					href="http://41.185.8.137/~xic02/alchemyofremembrance/"
 				>
 					Shop
-				</MenuLink>
-				<MenuLink to='/cart'>
+				</a>
+				{/**<MenuLink to='/cart'>
 					{hasItems &&
 						<CartCounter>
 							{quantity}
 						</CartCounter>
 					}
 					Cart 🛍
-				</MenuLink>
+				</MenuLink>*/}
 			</Container>
 		</Wrapper>
 	)

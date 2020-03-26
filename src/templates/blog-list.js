@@ -28,7 +28,7 @@ class BlogList extends React.Component {
 export default function({ data, pageContext }) {
     return (
         <Layout>
-            <BlogList datas={data} pathContext={pageContext} />
+            <BlogList datas={data} pageContext={pageContext} />
         </Layout>
     );
 }
@@ -46,7 +46,7 @@ export const query = graphql`
                 featuredImage {
                   sourceUrl
                 }
-                elementorData
+
               }
             }
           }

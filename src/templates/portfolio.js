@@ -89,7 +89,7 @@ post(id: $id) {
     sourceUrl
     title
   }
-  elementorData
+  
 }
 }
 

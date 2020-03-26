@@ -19,7 +19,7 @@ export default function() {
                       sourceUrl(size: LARGE)
                       srcSet(size: MEDIUM_LARGE)
                     }
-                    elementorData
+                    
                   }
                 }
               }

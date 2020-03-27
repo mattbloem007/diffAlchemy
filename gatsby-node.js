@@ -66,13 +66,7 @@ exports.createPages = ({ graphql, actions }) => {
 
 
 
-          allWcProducts {
-      edges {
-        node {
-          id
-        }
-      }
-    }
+
 
         }
 
@@ -87,6 +81,13 @@ exports.createPages = ({ graphql, actions }) => {
       //   }
       // }
       // }
+//       allWcProducts {
+//   edges {
+//     node {
+//       id
+//     }
+//   }
+// }
         const blogPosts = result.data.wpgraphql.posts.edges;
         const allPages = result.data.wpgraphql.pages.edges;
         console.log(blogPosts)
@@ -204,17 +205,17 @@ exports.createPages = ({ graphql, actions }) => {
     //   })
     // })
 
-    result.data.allWcProducts.edges.forEach(({ node }) => {
-      createPage({
-        path: `/product/${node.id}/`,
-        component: path.resolve(`./src/templates/ProductPage/index.js`),
-            context: {
-              // Data passed to context is available
-              // in page queries as GraphQL variables.
-              name: node.id
-            },
-      })
-    })
+    // result.data.allWcProducts.edges.forEach(({ node }) => {
+    //   createPage({
+    //     path: `/product/${node.id}/`,
+    //     component: path.resolve(`./src/templates/ProductPage/index.js`),
+    //         context: {
+    //           // Data passed to context is available
+    //           // in page queries as GraphQL variables.
+    //           name: node.id
+    //         },
+    //   })
+    // })
 
     });
 };

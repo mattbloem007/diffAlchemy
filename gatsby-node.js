@@ -90,7 +90,6 @@ exports.createPages = ({ graphql, actions }) => {
 // }
         const blogPosts = result.data.wpgraphql.posts.edges;
         const allPages = result.data.wpgraphql.pages.edges;
-        console.log(blogPosts)
 
         const blogPostsPerPage =
             result.data.limitPost.siteMetadata.blogItemsPerPage;
@@ -133,19 +132,21 @@ exports.createPages = ({ graphql, actions }) => {
         const numPodcastItems = Math.ceil(
             blogPosts.length / PodcastsItemsPerPage
         );
-
-        Array.from({ length: numPodcastItems }).forEach((_, i) => {
-            createPage({
-                path: i === 0 ? `/podcast` : `/podcast/${i + 1}`,
-                component: path.resolve("./src/templates/podcast-list.js"),
-                context: {
-                    limit: blogPostsPerPage,
-                    skip: i * blogPostsPerPage,
-                    numPages: numPortfolioItems,
-                    currentPage: i + 1
-                }
-            });
-        });
+        // console.log("before podcast")
+      //  Array.from({ length: numPodcastItems }).forEach((_, i) => {
+        //  console.log("in podcast")
+        //     createPage({
+        //         path: i === 0 ? `/podcast` : `/podcast/${i + 1}`,
+        //         component: path.resolve("./src/templates/podcast-list.js"),
+        //         context: {
+        //             limit: blogPostsPerPage,
+        //             skip: i * blogPostsPerPage,
+        //             numPages: numPortfolioItems,
+        //             currentPage: i + 1
+        //         }
+        //     });
+        //   //  console.log("after podcast")
+        // });
 
 
         blogPosts.forEach(({ node }) => {
@@ -167,7 +168,6 @@ exports.createPages = ({ graphql, actions }) => {
                 node.categories.edges[0].node.name === undefined
                     ? "portfolio"
                     : (node.categories.edges[0].node.name).toLowerCase();
-                    console.log("NODE1: ", template)
 
             createPage({
                 path: node.slug,
@@ -228,7 +228,6 @@ exports.onCreateNode = async ({ node, getNode, actions, store, cache, createNode
      if (node.context != undefined) {
 
        if (node.context.featuredImage) {
-         console.log("NODE: ", node.context.featuredImage.sourceUrl)
 
          try {
            fileNode = await createRemoteFileNode({

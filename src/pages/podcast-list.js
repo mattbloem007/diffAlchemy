@@ -7,7 +7,7 @@ import PodcastItems from "../components/items-podcast";
 class PodcastList extends React.Component {
     render() {
         const query = this.props.datas;
-        console.log("QUERY2", query)
+        console.log("QUERY22222", query)
         if (query.wpgraphql.posts.edges.length > 0) {
             return (
                 <section id="four" className="wrapper alt style1">
@@ -34,9 +34,9 @@ export default function({ data, pageContext }) {
 }
 
 export const query = graphql`
-    query podcastListPage($limit: Int!) {
+    query podcastListPage {
         wpgraphql {
-          posts(where: {categoryName: "Podcast", orderby: {field: DATE, order: DESC}}, first: $limit) {
+          posts(where: {categoryName: "Podcast", orderby: {field: DATE, order: DESC}}) {
             edges {
               node {
                 excerpt

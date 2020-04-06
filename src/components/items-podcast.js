@@ -10,6 +10,8 @@ class PodcastItem extends React.Component {
       if (this.props.file.node.childImageSharp) {
         isImage = true;
       }
+      let ex = this.props.data.node.excerpt.indexOf("<p class=");
+      let newEx = this.props.data.node.excerpt.slice(0, ex);
         return (
           <article>
             <div className="image">
@@ -26,7 +28,7 @@ class PodcastItem extends React.Component {
             </div>
             <h3 className="major">{this.props.data.node.title}</h3>
             <div  dangerouslySetInnerHTML={{
-                __html: this.props.data.node.excerpt
+                __html: newEx
             }}>
 
             </div>

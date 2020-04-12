@@ -2,12 +2,12 @@ const { createFilePath, createRemoteFileNode } = require(`gatsby-source-filesyst
 const path = require(`path`);
 const crypto = require('crypto')
 
-// require library
-const ypi = require('youtube-playlist-info')
-// read my API key
-const YT_KEY = 'AIzaSyBAmO9nEY9Z3mJ8gi5_obOZwOgXxiT8dMQ'
-// hardcode ID of my playlist for now
-const LWyP = 'PL_SSIvQejT9h_f2oS3pwo_pV9LYgaUuLp'
+// // require library
+// const ypi = require('youtube-playlist-info')
+// // read my API key
+// const YT_KEY = 'AIzaSyBAmO9nEY9Z3mJ8gi5_obOZwOgXxiT8dMQ'
+// // hardcode ID of my playlist for now
+// const LWyP = 'PL_SSIvQejT9h_f2oS3pwo_pV9LYgaUuLp'
 
 exports.createPages = ({ graphql, actions }) => {
     const { createPage } = actions;
@@ -251,72 +251,72 @@ exports.onCreateNode = async ({ node, getNode, actions, store, cache, createNode
 };
 
 
-exports.sourceNodes = async ({ actions, getNode, hasNodeChanged, }) => {
-    const { createNode } = actions;
-
-    const makeNode = node => {
-    node.internal.contentDigest = crypto
-      .createHash('md5')
-      .update(JSON.stringify(node))
-      .digest('hex')
-
-    createNode(node)
-  }
-
-  const items = await ypi(YT_KEY, LWyP)
-
-  let ytNode = {
-    id: 'youtube',
-    children: ['ytPlaylists'],
-    parent: null,
-    internal: {
-      type: 'youtube',
-    },
-  }
-
-  let playlistsNode = {
-    id: 'ytPlaylists',
-    parent: 'youtube',
-    children: ['lwypPlaylist'],
-    internal: {
-      type: 'ytPlaylists',
-    },
-  }
-
-  let lwypNode = {
-    id: 'lwypPlaylist',
-    parent: 'ytPlaylists',
-    children: [],
-    internal: {
-      type: 'ytPlaylist',
-    },
-  }
-
-  lwypNode.children = items.map(
-    ({ title, description, resourceId, thumbnails, position }) => {
-      const id = `${resourceId.videoId}`
-      makeNode({
-        id,
-        title,
-        description,
-        thumbnails,
-        position,
-        resourceId,
-        internal: {
-          type: 'ytVideo',
-        },
-        parent: 'lwypPlaylist',
-        children: [],
-      })
-      return id
-    }
-  )
-
-  makeNode(lwypNode)
-  makeNode(playlistsNode)
-  makeNode(ytNode)
-
-  // makeNode(lwypNode)
-
-  return
-}
+// exports.sourceNodes = async ({ actions, getNode, hasNodeChanged, }) => {
+//     const { createNode } = actions;
+//
+//     const makeNode = node => {
+//     node.internal.contentDigest = crypto
+//       .createHash('md5')
+//       .update(JSON.stringify(node))
+//       .digest('hex')
+//
+//     createNode(node)
+//   }
+//
+//   const items = await ypi(YT_KEY, LWyP)
+//
+//   let ytNode = {
+//     id: 'youtube',
+//     children: ['ytPlaylists'],
+//     parent: null,
+//     internal: {
+//       type: 'youtube',
+//     },
+//   }
+//
+//   let playlistsNode = {
+//     id: 'ytPlaylists',
+//     parent: 'youtube',
+//     children: ['lwypPlaylist'],
+//     internal: {
+//       type: 'ytPlaylists',
+//     },
+//   }
+//
+//   let lwypNode = {
+//     id: 'lwypPlaylist',
+//     parent: 'ytPlaylists',
+//     children: [],
+//     internal: {
+//       type: 'ytPlaylist',
+//     },
+//   }
+//
+//   lwypNode.children = items.map(
+//     ({ title, description, resourceId, thumbnails, position }) => {
+//       const id = `${resourceId.videoId}`
+//       makeNode({
+//         id,
+//         title,
+//         description,
+//         thumbnails,
+//         position,
+//         resourceId,
+//         internal: {
+//           type: 'ytVideo',
+//         },
+//         parent: 'lwypPlaylist',
+//         children: [],
+//       })
+//       return id
+//     }
+//   )
+//
+//   makeNode(lwypNode)
+//   makeNode(playlistsNode)
+//   makeNode(ytNode)
+//
+//   // makeNode(lwypNode)
+//
+//   return
+// }

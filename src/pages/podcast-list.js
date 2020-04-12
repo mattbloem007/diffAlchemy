@@ -36,7 +36,7 @@ export default function({ data, pageContext }) {
 export const query = graphql`
     query podcastListPage {
         wpgraphql {
-          posts(where: {categoryName: "Podcast", orderby: {field: DATE, order: DESC}}) {
+          posts(where: {categoryName: "Podcast", orderby: {field: DATE, order: DESC}}, first: 10) {
             edges {
               node {
                 excerpt

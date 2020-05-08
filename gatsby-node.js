@@ -25,49 +25,34 @@ exports.createPages = ({ graphql, actions }) => {
                 }
             }
 
-            wpgraphql {
-            posts {
-              edges {
-                node {
-                  id
-                  slug
-                  featuredImage{
-                    sourceUrl
-                  }
-                  categories {
-                    edges {
-                      node {
-                        name
-                      }
-                    }
-                  }
-
-                }
-              }
-            }
-
-            pages {
-              edges {
-                node {
-                  id
-                  slug
-                }
-              }
-            }
-
-            products {
-              edges {
-                node {
-                  id
-                  slug
-                }
+            wpgraphql{
+    posts(first: 100){
+      edges{
+        node{
+          id
+          slug
+          featuredImage{
+            sourceUrl
+          }
+          categories{
+            edges{
+              node{
+                name
               }
             }
           }
-
-
-
-
+        }
+      }
+    }
+    pages{
+      edges{
+        node{
+          id
+          slug
+        }
+      }
+    }
+  }
 
         }
 
@@ -88,6 +73,16 @@ exports.createPages = ({ graphql, actions }) => {
 //       id
 //     }
 //   }
+// }
+
+// products {
+//   edges {
+//     node {
+//       id
+//       slug
+//     }
+//   }
+// }
 // }
         const blogPosts = result.data.wpgraphql.posts.edges;
         const allPages = result.data.wpgraphql.pages.edges;

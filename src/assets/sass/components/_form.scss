@@ -76,7 +76,6 @@
 		font-weight: _font(weight-heading-bold);
 		letter-spacing: _font(kern-heading);
 		margin: 0 0 (_size(element-margin) * 0.35) 0;
-		text-transform: uppercase;
 	}
 
 	input[type="text"],
@@ -159,7 +158,6 @@
 			display: inline-block;
 			font-size: 1em;
 			font-family: _font(family);
-			text-transform: none;
 			letter-spacing: 0;
 			font-weight: _font(weight);
 			padding-left: (_size(element-height) * 0.6) + 0.75em;

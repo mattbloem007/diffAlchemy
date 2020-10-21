@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Cart from '../components/Cart'
+//import Cart from '../../Cart'
 import Layout from "../components/Layout"
 
 const CartPage = () => (
@@ -11,7 +11,6 @@ const CartPage = () => (
         <h1>Cart</h1>
         <div className="wrapper">
           <div className="inner">
-          <Cart />
           </div>
         </div>
       </div>

@@ -53,21 +53,7 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
-
-            products {
-              edges {
-                node {
-                  id
-                  slug
-                }
-              }
-            }
           }
-
-
-
-
-
         }
 
 
@@ -88,6 +74,17 @@ exports.createPages = ({ graphql, actions }) => {
 //     }
 //   }
 // }
+
+// products {
+//   edges {
+//     node {
+//       id
+//       slug
+//     }
+//   }
+// }
+// }
+  console.log("RESULTS ", result.data.wpgraphql.posts.edges)
         const blogPosts = result.data.wpgraphql.posts.edges;
         const allPages = result.data.wpgraphql.pages.edges;
 

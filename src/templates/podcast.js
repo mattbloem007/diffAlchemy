@@ -19,8 +19,7 @@ console.log("HER", content)
   if (data.file.childImageSharp) {
     isImage = true;
   }
-  let ex = data.wpgraphql.post.excerpt.indexOf("<p class=");
-  let newEx = data.wpgraphql.post.excerpt.slice(0, ex);
+
     return (
       <Layout fullMenu>
         <section id="wrapper">
@@ -29,7 +28,7 @@ console.log("HER", content)
             {isImage? <Img className="image fit" fluid={data.file.childImageSharp.fluid}/> : null}
               <h2>{data.wpgraphql.post.title}</h2>
               <div dangerouslySetInnerHTML={{
-                  __html: newEx
+                  __html: data.wpgraphql.post.excerpt
               }} />
             </div>
             <div className="wrapper">

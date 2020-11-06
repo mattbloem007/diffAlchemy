@@ -39,7 +39,7 @@ const Navigation = ({ siteTitle }) => {
 					About
 				</MenuLink>
 				<MenuLink
-					to="/podcast-list"
+					to="/podcast"
 				>
 					Podcast
 				</MenuLink>

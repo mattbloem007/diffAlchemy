@@ -92,7 +92,7 @@ module.exports = {
          // This is field under which it's accessible
          fieldName: `wpgraphql`,
          // Url to query from
-         url: `http://41.185.8.137/~xic02/alchemyofremembrance/graphql`,
+         url: `https://shop.alchemyremember.me/graphql`,
       //  url: `http://alchemy-of-remembrance.local/graphql`
        },
      },
@@ -105,8 +105,8 @@ module.exports = {
     {
      resolve: "gatsby-wpgraphql-inline-images",
      options: {
-       wordPressUrl: 'http://41.185.8.137/~xic02/alchemyofremembrance/',
-       uploadsUrl: 'http://41.185.8.137/~xic02/alchemyofremembrance/wp-content/uploads/',
+       wordPressUrl: 'https://shop.alchemyremember.me/',
+       uploadsUrl: 'https://shop.alchemyremember.me/wp-content/uploads/',
        processPostTypes: ["Post"],
        graphqlTypeName: `WPGraphQL`,
      },
@@ -124,7 +124,7 @@ module.exports = {
   resolve: "@pasdo501/gatsby-source-woocommerce",
   options: {
     // Base URL of Wordpress site
-    api: 'http://41.185.8.137/~xic02/alchemyofremembrance/',
+    api: 'https://shop.alchemyremember.me/',
     // true if using https. false otherwise.
     https: false,
     api_keys: {

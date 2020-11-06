@@ -25,7 +25,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
 
             wpgraphql {
-            posts {
+            posts (first: 10000) {
               edges {
                 node {
                   id
@@ -129,9 +129,8 @@ exports.createPages = ({ graphql, actions }) => {
         const numPodcastItems = Math.ceil(
             blogPosts.length / PodcastsItemsPerPage
         );
-        // console.log("before podcast")
-      //  Array.from({ length: numPodcastItems }).forEach((_, i) => {
-        //  console.log("in podcast")
+
+        // Array.from({ length: numPodcastItems }).forEach((_, i) => {
         //     createPage({
         //         path: i === 0 ? `/podcast` : `/podcast/${i + 1}`,
         //         component: path.resolve("./src/templates/podcast-list.js"),
@@ -142,7 +141,6 @@ exports.createPages = ({ graphql, actions }) => {
         //             currentPage: i + 1
         //         }
         //     });
-        //   //  console.log("after podcast")
         // });
 
 
@@ -165,6 +163,7 @@ exports.createPages = ({ graphql, actions }) => {
                 node.categories.edges[0].node.name === undefined
                     ? "portfolio"
                     : (node.categories.edges[0].node.name).toLowerCase();
+                    console.log("NODE1: ", template)
 
             createPage({
                 path: node.slug,
@@ -225,6 +224,7 @@ exports.onCreateNode = async ({ node, getNode, actions, store, cache, createNode
      if (node.context != undefined) {
 
        if (node.context.featuredImage) {
+         console.log("NODE: ", node.context.featuredImage.sourceUrl)
 
          try {
            fileNode = await createRemoteFileNode({

@@ -10,6 +10,7 @@ import {
 	Wrapper
 } from './styles'
 
+
 const useQuantity = () => {
 	const { store: {checkout} } = useContext(StoreContext)
 	const items = checkout ? checkout.lineItems : []

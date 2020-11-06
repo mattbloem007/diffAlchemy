@@ -54,7 +54,7 @@ const Navigation = ({ siteTitle }) => {
 					Offerings
 				</MenuLink>
 				<a target="_blank" style={styling}
-					href="http://41.185.8.137/~xic02/alchemyofremembrance/"
+					href="https://shop.alchemyremember.me/"
 				>
 					Shop
 				</a>

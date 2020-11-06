@@ -126,7 +126,7 @@ module.exports = {
     // Base URL of Wordpress site
     api: 'https://shop.alchemyremember.me/',
     // true if using https. false otherwise.
-    https: false,
+    https: true,
     api_keys: {
       consumer_key: `ck_dabd3f2ae776badf2c123f6641e248ccfef56f73`,
       consumer_secret: `cs_10b9d1d9dcf54cc0e289e46faf27890f2bb408e9`,

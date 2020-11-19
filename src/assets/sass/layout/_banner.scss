@@ -78,7 +78,6 @@ $ani-delay: 1s;
     font-weight: _font(weight-heading);
     letter-spacing: _font(kern-heading);
     line-height: 2;
-    text-transform: uppercase;
   }
 
   @include breakpoint('<=large') {

@@ -54,7 +54,6 @@
 			font-weight: _font(weight-heading-bold);
 			letter-spacing: _font(kern-heading);
 			margin: 0 0 _size(element-margin) 0;
-			text-transform: uppercase;
 
 			&:before {
 				@include vendor('transition', 'background-color #{_duration(transition)} ease-in-out');

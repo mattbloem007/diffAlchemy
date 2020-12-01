@@ -12,6 +12,7 @@ class BlogItem extends React.Component {
       }
       let ex = this.props.data.node.excerpt.indexOf("<p class=");
       let newEx = this.props.data.node.excerpt.slice(0, ex);
+      let newSlug = "/blog/" + this.props.data.node.slug
         return (
           <article>
             <div className="image">
@@ -33,7 +34,7 @@ class BlogItem extends React.Component {
 
             </div>
             <Link
-                to={this.props.data.node.slug}
+                to={`/blog/${this.props.data.node.slug}`}
                 title={this.props.data.node.title}
                 aria-label={this.props.data.node.title}
                 className="special"

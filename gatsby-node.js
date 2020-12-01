@@ -164,9 +164,11 @@ exports.createPages = ({ graphql, actions }) => {
                     ? "portfolio"
                     : (node.categories.edges[0].node.name).toLowerCase();
                     console.log("NODE1: ", template)
+                let slug = template + "/" + node.slug
+                console.log(slug)
 
             createPage({
-                path: node.slug,
+                path: slug,
                 component: path.resolve("./src/templates/" + template + ".js"),
                 context: {
                     id: node.id,
